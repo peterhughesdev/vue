@@ -5,7 +5,8 @@ var config    = require('./config'),
     def       = Object.defineProperty,
     OBJECT    = 'object',
     THIS_RE   = /[^\w]this[^\w]/,
-    hasClassList = 'classList' in document.documentElement,
+		framerate = 1000 / 60,
+		hasClassList = 'classList' in document.documentElement,
     ViewModel // late def
 
 var defer =
@@ -229,7 +230,7 @@ var utils = module.exports = {
      *  used to defer batch updates
      */
     nextTick: function (cb) {
-        defer(cb, 0)
+        defer(cb, framerate)
     },
 
     /**
